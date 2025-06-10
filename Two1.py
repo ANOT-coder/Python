@@ -10,14 +10,14 @@ class CircularQueue:
             print('Queue overflow')
             return
 
-        if self.front == -1:  # First element
+        if self.front == -1:  
             self.front = 0
             self.rear = 0
         else:
             self.rear = (self.rear + 1) % self.size
 
         self.queue[self.rear] = item
-        print(f'Item inserted: {item}')
+        print(f'Item being inserted is: {item}')
 
     def dequeue(self):
         if self.front == -1:
@@ -28,20 +28,19 @@ class CircularQueue:
         self.queue[self.front] = None
 
         if self.front == self.rear:
-            # Only one element was in queue
             self.front = -1
             self.rear = -1
         else:
             self.front = (self.front + 1) % self.size
 
-        print(f'Dequeued item: {removed_item}')
+        print(f'Dequeued item is: {removed_item}')
 
     def traverse(self):
         if self.front == -1:
-            print("Queue is empty")
+            print("Queue underflow")
             return
 
-        print("Queue contents:")
+        print("Queue items:")
         i = self.front
         while True:
             print(self.queue[i], end=" ")
@@ -49,6 +48,7 @@ class CircularQueue:
                 break
             i = (i + 1) % self.size
         print()
+
 def main():
     size = int(input('Enter the size of the queue: '))
     q = CircularQueue(size)
@@ -71,7 +71,7 @@ def main():
         elif choice == '4':
             break
         else:
-            print('Invalid choice. Choose 1-4.')
+            print('Invalid choice.')
 
 if __name__ == '__main__':
     main()
